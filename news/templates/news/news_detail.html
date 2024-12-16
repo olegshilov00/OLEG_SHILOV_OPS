@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ news.title }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>{{ news.title }}</h1>
+    <img src="{{ news.image.url }}" alt="{{ news.title }}" style="max-width: 100%; margin-bottom: 20px;">
+    <p>{{ news.content }}</p>
+    <p>
+        <strong>Категория:</strong>
+        {% if news.category %}
+            {{ news.category.name }}
+        {% else %}
+            Без категории
+        {% endif %}
+    </p>
+    <p>
+        <strong>Автор:</strong> {{ news.author.username }}
+    </p>
+    <p>
+        <small>Опубликовано: {{ news.created_at|date:"d.m.Y H:i" }}</small>
+    </p>
+    <a href="{% url 'news_list' %}">Вернуться к списку новостей</a>
+</div>
+{% endblock %}

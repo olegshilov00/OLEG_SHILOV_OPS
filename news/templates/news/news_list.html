@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block title %}Новости{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Новости</h1>
+
+    <!-- Категории -->
+    <div class="categories">
+        <h2>Категории</h2>
+        <ul>
+            {% for category in categories %}
+                <li><a href="{% url 'news_by_category' category.slug %}">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Теги -->
+    <div class="tags">
+        <h2>Теги</h2>
+        <ul>
+            {% for tag in tags %}
+                <li><a href="{% url 'news_by_tag' tag.slug %}">{{ tag.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Список новостей -->
+    <div class="news-list">
+        {% for news in page_obj %}
+            <div class="news-item">
+                <h2><a href="{% url 'news_detail' news.pk %}">{{ news.title }}</a></h2>
+                <img src="{{ news.image.url }}" alt="{{ news.title }}" style="max-width: 100%; margin-bottom: 10px;">
+                <p>{{ news.content|truncatewords:30 }}</p>
+                <p>
+                    <strong>Категория:</strong>
+                    {% if news.category %}
+                        <a href="{% url 'news_by_category' news.category.slug %}">{{ news.category.name }}</a>
+                    {% else %}
+                        Без категории
+                    {% endif %}
+                </p>
+                <p>
+                    <strong>Автор:</strong> {{ news.author.username }}
+                </p>
+                <p>
+                    <strong>Теги:</strong>
+                    {% for tag in news.tags.all %}
+                        <a href="{% url 'news_by_tag' tag.slug %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
+                <p>
+                    <small>Опубликовано: {{ news.created_at|date:"d.m.Y H:i" }}</small>
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Пагинация -->
+    <div class="pagination">
+        <nav>
+            <ul>
+                {% if page_obj.has_previous %}
+                    <li><a href="?page=1">&laquo; Первая</a></li>
+                    <li><a href="?page={{ page_obj.previous_page_number }}">Предыдущая</a></li>
+                {% endif %}
+
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                        <li><span>{{ num }}</span></li>
+                    {% else %}
+                        <li><a href="?page={{ num }}">{{ num }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <li><a href="?page={{ page_obj.next_page_number }}">Следующая</a></li>
+                    <li><a href="?page={{ page_obj.paginator.num_pages }}">Последняя &raquo;</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</div>
+{% endblock %}

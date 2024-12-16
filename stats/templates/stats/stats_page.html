@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block title %}Статистика{% endblock %}
+
+{% block content %}
+<div class="stats-container">
+    <h1>Статистика</h1>
+    <ul>
+        <li>
+            <strong>Количество постов за последние 2 дня:</strong>
+            {{ recent_posts_count }}
+        </li>
+        <li>
+            <strong>Количество постов с длинными заголовками:</strong>
+            {{ posts_with_long_titles }}
+        </li>
+        <li>
+            <strong>Количество правильных решений уравнений:</strong>
+            {{ correct_solutions_count }}
+        </li>
+        <li>
+            <strong>Решения, сделанные за последние 3 дня:</strong>
+            {{ recent_solutions }}
+        </li>
+        <li>
+            <strong>Количество уникальных уравнений:</strong>
+            {{ unique_equations_count }}
+        </li>
+        <li>
+            <strong>Процент правильных решений:</strong>
+            {{ accuracy|floatformat:2 }}%
+        </li>
+        <li>
+            <strong>Самое частое значение коэффициента b:</strong>
+            {{ most_common_b.b|default:"Нет данных" }}
+        </li>
+        <li>
+            <strong>Количество опубликованных постов:</strong>
+            {{ published_posts_count }}
+        </li>
+        <li>
+            <strong>Самый длинный пост:</strong>
+            {{ longest_post.title|default:"Нет данных" }}
+        </li>
+    </ul>
+</div>
+
+<style>
+.stats-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.stats-container h1 {
+    text-align: center;
+}
+
+.stats-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.stats-container li {
+    margin-bottom: 10px;
+}
+
+.stats-container strong {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+</style>
+{% endblock %}

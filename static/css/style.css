@@ -1,0 +1,164 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+    color: #eaeaea;
+    line-height: 1.6;
+}
+
+h1, h2 {
+    color: #ff6b6b;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #4d96ff;
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #ff6b6b;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #2b2b2b;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.news-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.news-item {
+    background-color: #333333;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.news-item:hover {
+    transform: scale(1.02);
+}
+
+.news-item h2 {
+    margin: 0 0 10px;
+}
+
+.news-item img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.news-item p {
+    margin: 0;
+    color: #ccc;
+}
+
+.pagination nav {
+    margin: 40px 0;
+}
+
+.pagination ul {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 0;
+    list-style: none;
+}
+
+.pagination a,
+.pagination span {
+    padding: 10px 15px;
+    border-radius: 8px;
+    background-color: #4d96ff;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.pagination a:hover {
+    background-color: #ff6b6b;
+}
+
+.pagination span {
+    background-color: #333333;
+}
+
+.categories, .tags {
+    margin: 30px 0;
+}
+
+.categories ul, .tags ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 0;
+}
+
+.categories li, .tags li {
+    background-color: #4d96ff;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.categories li:hover, .tags li:hover {
+    background-color: #ff6b6b;
+}
+
+.categories li a, .tags li a {
+    color: white;
+}
+
+
+nav {
+    background-color: #1a1a1a;
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid #333333;
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+}
+
+nav a {
+    color: #eaeaea;
+    font-size: 1.1em;
+    margin-right: 20px;
+    transition: color 0.3s ease-in-out;
+}
+
+nav a:hover {
+    color: #ff6b6b;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+

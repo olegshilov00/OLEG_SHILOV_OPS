@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}Новости с тегом {{ tag.name }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Новости с тегом: {{ tag.name }}</h1>
+    <div class="news-list">
+        {% for news in news_items %}
+            <div class="news-item">
+                <h2><a href="{% url 'news_detail' news.pk %}">{{ news.title }}</a></h2>
+                <img src="{{ news.image.url }}" alt="{{ news.title }}" style="max-width: 100%; margin-bottom: 10px;">
+                <p>{{ news.content|truncatewords:30 }}</p>
+                <p>
+                    <strong>Автор:</strong> {{ news.author.username }}
+                </p>
+                <p>
+                    <strong>Опубликовано:</strong> {{ news.created_at|date:"d.m.Y H:i" }}
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'news_list' %}">Вернуться ко всем новостям</a>
+</div>
+{% endblock %}

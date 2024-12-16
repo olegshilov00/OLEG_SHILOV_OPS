@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}Меню{% endblock %}
+
+{% block content %}
+  <div class="menu">
+    <ul>
+      <li><a href="{% url 'solve' %}" class="button">Решатель уравнений</a></li>
+      <li><a href="{% url 'trainer' %}" class="button">Тренажер</a></li>
+    </ul>
+  </div>
+
+  <style>
+    .menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+      align-items: center;
+    }
+
+    .menu li {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4CAF50;
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #3e8e41;
+    }
+  </style>
+{% endblock %}

@@ -1,0 +1,46 @@
+/* Изменим внешний вид админ-панели */
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+
+#header {
+    background: linear-gradient(270deg, #917575, #85775d, #9c9c7c, #728f72, #70708d, #745c84, #ffccf2, #937676) !important;
+    background-size: 400% 400% !important;
+    animation: gradient 30s ease infinite !important;
+    color: white;
+}
+
+.module h2 {
+    color: #0056b3;
+}
+
+fieldset {
+    border: 1px solid #007bff !important;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+button, input[type="submit"] {
+    background-color: #007bff !important;
+    color: white !important;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-weight: bold;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #0056b3 !important;
+    cursor: pointer;
+}

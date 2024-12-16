@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"name": "test",
+			"path": "../../../../../../Desktop/test"
+		},
+		{
+			"name": "Prog",
+			"path": "../.."
+		},
+		{
+			"path": "../../../../../myProjects/stepikPython"
+		},
+		{
+			"path": "../../../../../../Nextcloud/MPGU/works"
+		}
+	],
+	"settings": {
+		"editor.defaultFormatter": "ms-python.black-formatter",
+		"editor.formatOnSave": true
+	}
+}

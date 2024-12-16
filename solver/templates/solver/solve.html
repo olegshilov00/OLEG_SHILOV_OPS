@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Решение квадратного уравнения</title>
+    {% extends "layout.html" %}
+    {% block content %}
+    <div class="container">
+        <h1 class="title">Решение квадратного уравнения</h1>
+        <form method="get" action="" class="form">
+            <label for="a" class="label">Коэффициент a:</label>
+            <input type="text" id="a" name="a" class="input" placeholder="Введите значение a">
+
+            <label for="b" class="label">Коэффициент b:</label>
+            <input type="text" id="b" name="b" class="input" placeholder="Введите значение b">
+
+            <label for="c" class="label">Коэффициент c:</label>
+            <input type="text" id="c" name="c" class="input" placeholder="Введите значение c">
+
+            <button type="submit" class="button">Решить</button>
+        </form>
+        {% if equation %}
+        <div class="result">
+            <p><strong>Уравнение:</strong> {{ equation }}</p>
+            <p><strong>Результат:</strong> {{ roots }}</p>
+        </div>
+        {% endif %}
+    </div>
+    {% endblock %}
+</body>
+</html>

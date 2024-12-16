@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мини-тренажёр</title>
+    {% extends "layout.html" %}
+    {% block content %}
+    <div class="container">
+        <h1 class="title">Мини-тренажёр</h1>
+        <p class="equation">Уравнение: <strong>{{ a }}x² + {{ b }}x + {{ c }} = 0</strong></p>
+        <form method="post" class="form">
+            {% csrf_token %}
+            <input type="hidden" name="a" value="{{ a }}">
+            <input type="hidden" name="b" value="{{ b }}">
+            <input type="hidden" name="c" value="{{ c }}">
+
+            <label for="root1" class="label">Первый корень:</label>
+            <input type="text" id="root1" name="root1" class="input" placeholder="Например: 0.14">
+
+            <label for="root2" class="label">Второй корень:</label>
+            <input type="text" id="root2" name="root2" class="input" placeholder="Например: -3.45">
+
+            <p class="hint">
+                Вводите корни в любом порядке. Если уравнение не имеет корней, нажмите «Нет корней».
+            </p>
+
+            <button type="submit" class="button">Проверить</button>
+            <button type="submit" name="solution" value="нет корней" class="button button--secondary">Нет корней</button>
+        </form>
+        {% if correct_solution %}
+        <div class="result">
+            <p><strong>Ваши корни:</strong> {{ user_solution }}</p>
+            <p><strong>Правильные корни:</strong> {{ correct_solution }}</p>
+            {% if is_correct %}
+            <p class="correct">Верно!</p>
+            {% else %}
+            <p class="incorrect">Неверно.</p>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+    {% endblock %}
+</html>
